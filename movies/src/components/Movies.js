@@ -1,4 +1,4 @@
-import OneMovie from './OneMovie'
+//import OneMovie from './OneMovie'
 import {useState, useEffect, useLayoutEffect} from 'react'
 import Pagination from './Pagination'
 
@@ -18,7 +18,7 @@ function Movies() {
         const options = {
             //method: 'GET',
             headers: {
-                'X-RapidAPI-Key': '452e07017emshac7920adb2d187ap1c4facjsn891862742447',
+                'X-RapidAPI-Key': , 
                 'X-RapidAPI-Host': 'unogs-unogs-v1.p.rapidapi.com'
             }
         };
@@ -60,18 +60,17 @@ function Movies() {
                     {currentMovies.map( (oneMovie, index) => {
                         return (
 
-                            /*<ul className="moviesList">
-                                <li className="moviesListItems" key={movie.index}>*/
+                            
                                     <article className="one-movie">
                                         <div className="inside-one-movie">
-                                            <img className="poster" src={oneMovie.poster} alt="Movie Poster" />
+                                            <img className="poster" src={oneMovie.img} alt="Movie Poster" />
                                             <h3>{oneMovie.title}</h3>
                                             <h5>{oneMovie.year}</h5>
-                                            <p>{oneMovie.synopsis}</p> 
+                                            <p>{oneMovie.synopsis}</p>
+                                            <a href=""> Ver mas</a> 
                                         </div>                
                                     </article>
-                                /*</li>
-                            </ul>*/
+                            
                             
                             )                        
                         })                    
@@ -80,7 +79,7 @@ function Movies() {
             )}
             
 
-            <OneMovie moviesList={movie} />           
+            {/*<OneMovie moviesList={movie} />*/}
             
             <Pagination moviesPerPage={moviesPerPage} totalMovies={movie.length} paginate={paginate} />            
 
