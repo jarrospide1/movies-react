@@ -18,7 +18,7 @@ function Movies() {
         const options = {
             //method: 'GET',
             headers: {
-                'X-RapidAPI-Key': , 
+                'X-RapidAPI-Key': 'key', 
                 'X-RapidAPI-Host': 'unogs-unogs-v1.p.rapidapi.com'
             }
         };
