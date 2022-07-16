@@ -1,5 +1,6 @@
 //import OneMovie from './OneMovie'
-import {useState, useEffect, useLayoutEffect} from 'react'
+import {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom';
 import Pagination from './Pagination'
 
 function Movies() {
@@ -18,7 +19,7 @@ function Movies() {
         const options = {
             //method: 'GET',
             headers: {
-                'X-RapidAPI-Key': 'key', 
+                'X-RapidAPI-Key': 'API', 
                 'X-RapidAPI-Host': 'unogs-unogs-v1.p.rapidapi.com'
             }
         };
@@ -38,8 +39,8 @@ function Movies() {
 
     // Get current Movies
     const indexOfLastMovie = currentPage * moviesPerPage;
-    const indexOfFirstPost = indexOfLastMovie - moviesPerPage;
-    const currentMovies = movie.slice(indexOfFirstPost, indexOfLastMovie)
+    const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
+    const currentMovies = movie.slice(indexOfFirstMovie, indexOfLastMovie) // This returns a copy of part of the array, from index 0 to 7 in the first view (not 8)
 
 
     // Change Page
@@ -67,7 +68,7 @@ function Movies() {
                                             <h3>{oneMovie.title}</h3>
                                             <h5>{oneMovie.year}</h5>
                                             <p>{oneMovie.synopsis}</p>
-                                            <a href=""> Ver mas</a> 
+                                            <Link to=""> Ver mas </Link> 
                                         </div>                
                                     </article>
                             
