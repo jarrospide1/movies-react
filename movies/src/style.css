@@ -59,9 +59,8 @@ body {
 .one-movie {
     width: 28%;   
     margin: 2%;
-    max-height:500px;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    /*text-overflow: ellipsis;
+    overflow: hidden;*/
     
 }
 
@@ -84,8 +83,8 @@ body {
     font-size: 20px;
 }
 
-.inside-one-movie h5,p {
-    font-size: 10px;
+.inside-one-movie h5 {
+    font-size: 14px;
 }
 
 

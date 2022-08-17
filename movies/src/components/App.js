@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 // components
 import Header from './Header'
 import Movies from './Movies'
-import MovieDetail from './MovieDetail'
+import Detail from './Detail'
 import Pagination from './Pagination'
 import Watched from './Watched';
 import Watchlist from './Watchlist';
@@ -33,7 +33,7 @@ function App() {
         </Route>
 
         <Route path="/movie/:id" >
-          <MovieDetail />
+          <Detail />
         </Route>
 
         <Route exact={true} path="/:id" >
