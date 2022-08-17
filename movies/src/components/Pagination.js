@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-function Pagination( { moviesPerPage, totalMovies, paginate}) {
+function Pagination( { moviesPerPage, totalMovies, paginate }) {
 // Arguments: (8, 100, paginate function)
     const pageNumbers = [];
 
@@ -10,7 +10,7 @@ function Pagination( { moviesPerPage, totalMovies, paginate}) {
     }
 
     return (
-        <nav>
+        <nav className='pagination-wrapper'>
             <ul className="pagination">
                 {pageNumbers.map( number => (
                     <li key={number} className="page-item">

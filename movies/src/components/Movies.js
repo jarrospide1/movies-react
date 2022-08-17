@@ -1,31 +1,22 @@
 //import OneMovie from './OneMovie'
-import {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import Pagination from './Pagination'
+import Pagination from './Pagination';
 
 function Movies() {
 
     const [movie, setMovie] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1); // it starts in page 1
-    const [moviesPerPage, setMoviesPerPage] = useState(8); //number of movies we want per page
+    const [moviesPerPage, setMoviesPerPage] = useState(9); //number of movies we want per page
 
     console.log('movie', movie);
     //console.log('setMovie', setMovie);
 
     // componentDidMount
     useEffect(() => {
-        //console.log('the component was mounted');
-        const options = {
-            //method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': 'API', 
-                'X-RapidAPI-Host': 'unogs-unogs-v1.p.rapidapi.com'
-            }
-        };
-
         //Apicall
-        fetch('https://unogs-unogs-v1.p.rapidapi.com/search/titles?order_by=date&type=movie', options)
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_MOVIES_KEY}&language=en-US&page=1`)
         .then(response => response.json())
         .then(data => {
             setMovie(data.results);
@@ -53,7 +44,7 @@ function Movies() {
 
         
         <section className="movies-main">            
-
+            
             {isLoading && <h2>Cargando pelis ...</h2> }            
 
             {movie && (
@@ -62,13 +53,12 @@ function Movies() {
                         return (
 
                             
-                                    <article className="one-movie">
-                                        <div className="inside-one-movie">
-                                            <img className="poster" src={oneMovie.img} alt="Movie Poster" />
+                                    <article className="one-movie" key={index}>
+                                        <div className="inside-one-movie" >
+                                            <img className="poster" src={`http://image.tmdb.org/t/p/original${oneMovie.poster_path}`} alt={`${oneMovie.title} Poster`} />
                                             <h3>{oneMovie.title}</h3>
-                                            <h5>{oneMovie.year}</h5>
-                                            <p>{oneMovie.synopsis}</p>
-                                            <Link to=""> Ver mas </Link> 
+                                            <h5>{oneMovie.release_date.substring(0,4)}</h5>
+                                            <Link to={`/movie/${index}`} className="btn btn-dark"> Details </Link> 
                                         </div>                
                                     </article>
                             

@@ -9,6 +9,12 @@
     list-style: none;
 }
 
+a {
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+}
+
 body {
     font-family: roboto, sans-serif;
 }
@@ -16,8 +22,8 @@ body {
 .header-container {
     display: flex;
     flex-wrap: wrap;
-    background-color: aquamarine;
-    margin: 0 0 100px 0;    
+    background-color: rgb(43, 43, 43);
+    margin: 0 0 5% 0;    
 }
 
 .navbar-list {
@@ -28,6 +34,8 @@ body {
 .navbar-list li {
     margin: 10px;    
     align-self: center;
+    color: #ffffff;
+    text-decoration: none;
 }
 
 .movies-main {
@@ -36,7 +44,7 @@ body {
     width: 90%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-around;
 }
 
 .moviesList {
@@ -49,22 +57,22 @@ body {
 }
 
 .one-movie {
-    width: 20%;
-    border-radius: 10px;
-    background-color: aquamarine;
+    width: 28%;   
     margin: 2%;
+    max-height:500px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    
 }
 
 .one-movie:hover {
     box-shadow: 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.inside-one-movie {
-    padding: 15px 20px;
-    margin: 4%;
+.inside-one-movie {    
     background-color: #ffffff; 
     justify-content: flex-start;
-    border-radius: 10px;
+    height: 95%;
 }
 
 .inside-one-movie img {
@@ -72,3 +80,54 @@ body {
     margin: auto;
 }
 
+.inside-one-movie h3 {
+    font-size: 20px;
+}
+
+.inside-one-movie h5,p {
+    font-size: 10px;
+}
+
+
+/* Styles for Add component */
+.search-container {
+    width: 80%;
+    margin:auto;
+    text-align: center;
+    
+}
+
+.input-search {
+    width:50%;
+    padding: 5px 0 5px 30px;
+    color: rgb(46, 46, 46);
+    background-color:rgba(180, 202, 200, 0.411) ;
+    border-radius: 10px;
+    border: 0px;
+}
+
+.results-preview {
+    margin-top: 5%;
+}
+
+.result-card {
+    display: flex;
+    margin: 0 auto 3%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.text-info {
+    margin: 0 3%; 
+    color: black !important;
+    max-width: 50%;
+    /*min-width: 796px;*/
+}
+
+.poster-wrapper img {
+    width: 150px;
+}
+
+.pagination-wrapper {
+    display: block;
+}

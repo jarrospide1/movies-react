@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 function Header() {
     return(
 
@@ -5,9 +7,15 @@ function Header() {
             <section className="header-container">
                 <img src="https://img.freepik.com/premium-vector/click-movie-logo-vector_18099-258.jpg" alt="logo" width="200px" />
                 <ul className="navbar-list">
-                    <li>Menu 1</li>
-                    <li>Menu 2</li>
-                    <li>Menu 3</li>
+                    <li>
+                        <Link to="/"> Movies List </Link>
+                    </li>
+                    <li>
+                        <Link to="/watched"> Watched </Link>
+                    </li>                    
+                    <li>
+                        <Link to="/add"> Add Movie </Link>
+                    </li>                    
                 </ul> 
             </section>
         </header>
@@ -15,4 +23,4 @@ function Header() {
     )
 }
 
-export default Header
+export default Header;
