@@ -4,29 +4,12 @@ import { Link } from 'react-router-dom';
 import Pagination from './Pagination';
 
 
-function Movies() {
+function Movies( {movie, isLoading }) {
 
-    const [movie, setMovie] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1); // it starts in page 1
     const [moviesPerPage, setMoviesPerPage] = useState(9); //number of movies we want per page
 
-    console.log('movie', movie);
-    //console.log('setMovie', setMovie);
 
-    // componentDidMount
-    useEffect(() => {
-        //Apicall
-        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_MOVIES_KEY}&language=en-US&page=1`)
-        .then(response => response.json())
-        .then(data => {
-            setMovie(data.results);
-            setIsLoading(false)
-            //console.log('data', data);
-        })
-        .catch(err => console.log(err))
-    }, [])
-    // Ends componentDidMount
 
 
     // Get current Movies

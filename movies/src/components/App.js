@@ -1,5 +1,6 @@
 //Libraries
 import { Route, Switch } from 'react-router-dom';
+import {useState, useEffect} from 'react';
 
 
 // components
@@ -14,6 +15,26 @@ import Add from './Add';
 
 function App() {
 
+
+  const [movie, setMovie] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  console.log('movie', movie);
+  //console.log('setMovie', setMovie);
+  // componentDidMount
+  useEffect(() => {
+      //Apicall
+      fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_MOVIES_KEY}&language=en-US&page=1`)
+      .then(response => response.json())
+      .then(data => {
+          setMovie(data.results);
+          setIsLoading(false)
+          //console.log('data', data);
+      })
+      .catch(err => console.log(err))
+  }, [])
+  // Ends componentDidMount
+
   return (
     <div className="App">
       <Header />
@@ -21,7 +42,7 @@ function App() {
       <Switch>
 
         <Route exact={true} path="/">
-          <Movies />
+          <Movies movie={movie} isLoading={isLoading} />
         </Route>
 
         <Route path="/watched">
@@ -33,10 +54,10 @@ function App() {
         </Route>
 
         <Route path="/movie/:id" >
-          <Detail />
+          <Detail movie={movie} />
         </Route>
 
-        <Route exact={true} path="/:id" >
+        <Route exact={true} path="/:id"  >
           <Movies />
         </Route>
 
