@@ -11,7 +11,7 @@ function Header() {
                         <Link to="/"> Movies List </Link>
                     </li>
                     <li>
-                        <Link to="/watched"> Watched </Link>
+                        <Link to="/favorites"> Favorites </Link>
                     </li>                    
                     <li>
                         <Link to="/add"> Add Movie </Link>

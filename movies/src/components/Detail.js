@@ -1,5 +1,8 @@
+
+
 function Detail ( {movie} ) {
 
+    
     console.log(movie)
 
  return(

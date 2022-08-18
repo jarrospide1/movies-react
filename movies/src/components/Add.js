@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useState } from "react"
 import MoviePoster from "./MoviePoster";
 
@@ -6,11 +7,9 @@ function Add () {
     const [search, setSearch] = useState("");
     const [results, setResults] = useState([]);
 
-    const onChange = function(e) {
-        e.preventDefault();
-        setSearch(e.target.value);
 
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIES_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`)
+    useEffect(() => {
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIES_KEY}&language=en-US&page=1&include_adult=false&query=${search}`)
             .then(response => response.json())
             .then((data) => {
                 //console.log(data.results);
@@ -22,8 +21,12 @@ function Add () {
                 }
             })
             .catch(err => console.error(err));
+        }, [search]
+    )
 
-        };       
+        
+
+               
 
     return(
         <>            
@@ -34,7 +37,7 @@ function Add () {
                     className="input-search"
                     type="text" 
                     placeholder="Search Movie"
-                    onChange={onChange}
+                    onChange={(e) => setSearch(e.target.value)}
                     />
                 </div>
                 {results.length > 0 && (
@@ -51,5 +54,6 @@ function Add () {
         </>
     )
 }
+
 
 export default Add;
