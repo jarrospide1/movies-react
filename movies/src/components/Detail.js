@@ -1,20 +1,33 @@
+import {useParams} from "react-router-dom";
 
+function Detail ( {movie, addFavoriteMovie, AddToWatchlist} ) {
 
-function Detail ( {movie} ) {
+    const {id} = useParams();
+    console.log(id);
 
-    
-    console.log(movie)
-
- return(
-
-    <div className="detail-container">
-        <div className="poster-detail">
-            <h1>detalle de la pelicula {movie.index}</h1>
-        </div>
-
-    </div>
-
- )   
+    return(
+        <>
+            {movie.map( (oneMovie, index) => {
+                if(id === oneMovie.title) {
+                    return (
+                        <div className="movie-detail-container" key={index}>
+                            <div className="one-movie-poster">
+                                <img className="detail-poster" src={`http://image.tmdb.org/t/p/original${oneMovie.poster_path}`} alt={`${oneMovie.title} Poster`} />
+                                <div className="detail-data">
+                                    <h3>{oneMovie.title}</h3>
+                                    <h5>{oneMovie.release_date.substring(0,4)}</h5>
+                                    <h5>Rating: {oneMovie.vote_average}</h5>
+                                    <p>{oneMovie.overview}</p>
+                                    <button className="btn btn-dark" onClick={() => addFavoriteMovie(oneMovie)}> Add to Favorites</button>                                    
+                                </div>                                    
+                            </div>
+                        </div>                        
+                    )  
+                }
+            })                    
+        }
+        </>    
+    )   
 }
 
 export default Detail;

@@ -25,7 +25,7 @@ function Watchlist( { favorites, RemoveFromWatchlist, removeFavoriteMovie } ) {
                                                 </div>
                                                 <h3>{oneMovie.title}</h3>
                                                 <h5>{oneMovie.release_date.substring(0,4)}</h5>
-                                                <Link to={`/movie/${index}`} className="btn btn-dark"> Details </Link> 
+                                                <Link to={`/movie/${oneMovie.title}`} className="btn btn-dark"> Details </Link>
                                             </div>                
                                         </article>
 

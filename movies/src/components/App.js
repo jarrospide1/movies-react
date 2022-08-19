@@ -1,5 +1,5 @@
 //Libraries
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import {useState, useEffect} from 'react';
 
 
@@ -74,33 +74,21 @@ function App() {
     <div className="App">
       <Header />
 
-      <Switch>
+      <Routes>
 
-        <Route exact={true} path="/">
-          <Movies movie={movie} isLoading={isLoading} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} />
-        </Route>
+        <Route exact={true} path="/" element={<Movies movie={movie} isLoading={isLoading} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} />}></Route>       
 
-        <Route path="/favorites">
-          <Watchlist favorites={favorites} RemoveFromWatchlist={RemoveFromWatchlist} removeFavoriteMovie={removeFavoriteMovie} />
-        </Route>
-
-        <Route path="/add">
-          <Add />
-        </Route>
-
-        <Route path="/movie/:id" >
-          <Detail movie={movie} />
-        </Route>
-
-        <Route exact={true} path="/:id"  >
-          <Movies />
-        </Route>
-
-        <Route>
-          <h3>Error 404</h3>
-        </Route>
-
-      </Switch>
+        <Route path="/favorites" element={<Watchlist favorites={favorites} RemoveFromWatchlist={RemoveFromWatchlist} removeFavoriteMovie={removeFavoriteMovie} />}></Route>         
+        
+        <Route path="/add" element={<Add />}></Route>
+        
+        <Route path="/movie/:id" element={<Detail movie={movie} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} />}></Route>
+          
+        <Route exact={true} path="/:id"  element={<Movies />}></Route>
+          
+        <Route><h3>Error 404</h3></Route>
+          
+      </Routes>
 
     </div>
   );

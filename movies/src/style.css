@@ -157,3 +157,27 @@ body {
     padding: 20px;
     text-align: center;
 }
+
+/* inside Movide Detail */
+
+.movie-detail-container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.one-movie-poster {
+    width: 100%;   
+    margin: 2%;
+    display: flex;
+    
+}
+
+.detail-poster {
+    width:35%;
+}
+
+.detail-data {
+    margin-left: 5%;
+}
