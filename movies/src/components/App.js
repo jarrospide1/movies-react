@@ -7,8 +7,6 @@ import {useState, useEffect} from 'react';
 import Header from './Header'
 import Movies from './Movies'
 import Detail from './Detail'
-import Pagination from './Pagination'
-import Watched from './Watched';
 import Watchlist from './Watchlist';
 import Add from './Add';
 import AddToWatchlist from './AddToWatchlist'
@@ -21,7 +19,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [favorites, setFavorites] = useState([]);
   
-  console.log('movie', movie);
+  //console.log('movie', movie);
   //console.log('setMovie', setMovie);
   // componentDidMount
 
@@ -53,18 +51,17 @@ function App() {
     const newFavoriteList = [...favorites, oneMovie];
     setFavorites(newFavoriteList);
     saveToLocalStorage(newFavoriteList); 
-    console.log(newFavoriteList)
+    //console.log(newFavoriteList)
   }
 
   const removeFavoriteMovie = function(oneMovie) {
     const newFavoriteList = favorites.filter(
-      (favorite) => favorite.id !== oneMovie.id
-      
+      (favorite) => favorite.id !== oneMovie.id      
     );
   
     setFavorites(newFavoriteList);
     saveToLocalStorage(newFavoriteList); 
-    console.log(newFavoriteList)
+    //console.log(newFavoriteList)
   }
 
 
@@ -74,7 +71,7 @@ function App() {
 
       <Routes>
 
-        <Route exact={true} path="/" element={<Movies movie={movie} isLoading={isLoading} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} />}></Route>       
+        <Route exact={true} path="/" element={<Movies movie={movie} isLoading={isLoading} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} favorites={favorites}/>}></Route>       
 
         <Route path="/favorites" element={<Watchlist favorites={favorites} RemoveFromWatchlist={RemoveFromWatchlist} removeFavoriteMovie={removeFavoriteMovie} />}></Route>         
         

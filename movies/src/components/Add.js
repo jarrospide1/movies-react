@@ -24,14 +24,8 @@ function Add () {
         }, [search]
     )
 
-        
-
-               
-
     return(
-        <>            
-            
-            
+        <>                        
             <div className="add-page">
                 <div className="search-container">
                     <input 
@@ -42,16 +36,20 @@ function Add () {
                     />
                 </div>
                 {results.length > 0 && (
-                    <ul className="results-preview">
-                        {results.map( oneMovie => (
-                            <li key={oneMovie.id}> 
-                                <MoviePoster oneMovie={oneMovie} />
-                            </li>
-                        ))}
-                    </ul>
+                    <>
+                        <h3 className="h3-title">Search Results</h3>
+                        <div>
+                            <ul className="movies-main">
+                                {results.map( oneMovie => (
+                                    <li key={oneMovie.id} className="one-movie"> 
+                                        <MoviePoster oneMovie={oneMovie} />
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </>
                 )}
             </div>
-
         </>
     )
 }

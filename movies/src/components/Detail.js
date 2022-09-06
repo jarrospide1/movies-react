@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 
-function Detail ( {movie, addFavoriteMovie, AddToWatchlist} ) {
+function Detail ( {movie, addFavoriteMovie} ) {
 
     const {id} = useParams();
     console.log(id);
@@ -11,8 +11,8 @@ function Detail ( {movie, addFavoriteMovie, AddToWatchlist} ) {
                 if(id === oneMovie.title) {
                     return (
                         <div className="movie-detail-container" key={index}>
-                            <div className="one-movie-poster">
-                                <img className="detail-poster" src={`http://image.tmdb.org/t/p/original${oneMovie.poster_path}`} alt={`${oneMovie.title} Poster`} />
+                            <div className="one-movie-poster-display">
+                                <img className="detail-poster-display" src={`http://image.tmdb.org/t/p/original${oneMovie.poster_path}`} alt={`${oneMovie.title} Poster`} />
                                 <div className="detail-data">
                                     <h3>{oneMovie.title}</h3>
                                     <h5>{oneMovie.release_date.substring(0,4)}</h5>
