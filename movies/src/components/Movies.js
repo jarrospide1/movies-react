@@ -2,47 +2,40 @@
 import {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from './Pagination';
+import Add from './Add';
 
 
-function Movies( {movie, isLoading, AddToWatchlist, addFavoriteMovie }) {
+function Movies( {movie, isLoading, AddToWatchlist, addFavoriteMovie, }) {    
 
-    
-
-    //const [currentPage, setCurrentPage] = useState(1); // it starts in page 1
-    //const [moviesPerPage, setMoviesPerPage] = useState(9); //number of movies we want per page
-
-
-
+    const [currentPage, setCurrentPage] = useState(1); // it starts in page 1
+    const [moviesPerPage, setMoviesPerPage] = useState(9); //number of movies we want per page
 
     // Get current Movies
-    //const indexOfLastMovie = currentPage * moviesPerPage;
-    //const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
-    //const currentMovies = movie.slice(indexOfFirstMovie, indexOfLastMovie) // This returns a copy of part of the array, from index 0 to 7 in the first view (not 8)
+    const indexOfLastMovie = currentPage * moviesPerPage;
+    const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
+    const currentMovies = movie.slice(indexOfFirstMovie, indexOfLastMovie) // This returns a copy of part of the array, from index 0 to 8 in the first view (not 9)
+    console.log(currentMovies)
 
 
     // Change Page
-    //function paginate(pageNumber) {
-    //    return setCurrentPage(pageNumber)
-    //}
-
-    //function addFavouriteMovie (movie) {
-        //const newFavouriteList = [...favouriteMovies, movie];
-        //setFavouriteMovies(newFavouriteList)
-    //}
+    function paginate(pageNumber) {
+        return setCurrentPage(pageNumber)
+    }
 
     return(
 
         <>
+
+            < Add />
         
             <section className="movies-main">            
 
                 {isLoading && <h2>Cargando pelis ...</h2> }            
 
-                {movie && (
+                {currentMovies && (
                     <>
-                        {movie.map( (oneMovie, index) => {
+                        {currentMovies.map( (oneMovie, index) => {
                             return (
-
 
                                         <article className="one-movie" key={index}>
                                             <div className="inside-one-movie" >
@@ -55,18 +48,13 @@ function Movies( {movie, isLoading, AddToWatchlist, addFavoriteMovie }) {
                                                 <Link to={`/movie/${oneMovie.title}`} className="btn btn-dark"> Details </Link> 
                                             </div>                
                                         </article>
-
-
                                 )                        
                             })                    
                         }
                     </>
                 )}
 
-
-                {/*<OneMovie moviesList={movie} />*/}
-                    
-                {/*<Pagination moviesPerPage={moviesPerPage} totalMovies={movie.length} paginate={paginate} />   */}         
+                <Pagination moviesPerPage={moviesPerPage} totalMovies={movie.length} paginate={paginate} />         
 
             </section>
 

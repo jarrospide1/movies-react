@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom"
 
+import logo from "../peliculon.png"
+
 function Header() {
     return(
 
         <header>
             <section className="header-container">
-                <img src="https://img.freepik.com/premium-vector/click-movie-logo-vector_18099-258.jpg" alt="logo" width="200px" />
+                <img src={logo} alt="logo" width="300px" />
                 <ul className="navbar-list">
                     <li>
                         <Link to="/"> Movies List </Link>

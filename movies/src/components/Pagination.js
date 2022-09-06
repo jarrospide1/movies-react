@@ -8,6 +8,7 @@ function Pagination( { moviesPerPage, totalMovies, paginate }) {
     for(let i = 1; i <= Math.ceil(totalMovies / moviesPerPage); i++) {
         pageNumbers.push(i);
     }
+    console.log(pageNumbers)
 
     return (
         <nav className='pagination-wrapper'>

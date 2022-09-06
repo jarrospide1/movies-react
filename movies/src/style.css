@@ -22,8 +22,13 @@ body {
 .header-container {
     display: flex;
     flex-wrap: wrap;
-    background-color: rgb(43, 43, 43);
-    margin: 0 0 5% 0;    
+    background-color: rgb(130, 207, 210);
+    margin: 0 0 5% 0;
+    justify-content: center;    
+}
+
+.header-container img {
+    width: 200px;
 }
 
 .navbar-list {
@@ -57,8 +62,8 @@ body {
 }
 
 .one-movie {
-    width: 28%;   
-    margin: 2%;
+    width: 80%;   
+    margin: 10% 2%;
     /*text-overflow: ellipsis;
     overflow: hidden;*/
     
@@ -180,4 +185,29 @@ body {
 
 .detail-data {
     margin-left: 5%;
+}
+
+@media (min-width: 460px){
+    /*Tablet*/
+    .one-movie {
+        width: 40%;   
+        margin: 5% 2%;       
+    }
+
+    .header-container img {
+        width: 300px;
+    }
+
+    .header-container {
+        justify-content: space-between;
+        padding: 0 5%;
+    }
+}
+
+@media (min-width: 768px){
+    /*Laptop*/
+    .one-movie {
+        width: 23%;   
+        margin: 3% 2%;       
+    }
 }

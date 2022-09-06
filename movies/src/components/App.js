@@ -17,10 +17,9 @@ import RemoveFromWatchlist from './RemoveFromWatchlist';
 
 function App() {
 
-
   const [movie, setMovie] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [favorites, setFavorites] = useState([])
+  const [favorites, setFavorites] = useState([]);
   
   console.log('movie', movie);
   //console.log('setMovie', setMovie);
@@ -41,7 +40,6 @@ function App() {
 
   useEffect(() => {
     const movieFavorites = JSON.parse(localStorage.getItem('react-movie-favorites'));
-
     setFavorites(movieFavorites);
   }, [])
 
@@ -68,7 +66,7 @@ function App() {
     saveToLocalStorage(newFavoriteList); 
     console.log(newFavoriteList)
   }
-  
+
 
   return (
     <div className="App">
@@ -84,7 +82,7 @@ function App() {
         
         <Route path="/movie/:id" element={<Detail movie={movie} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} />}></Route>
           
-        <Route exact={true} path="/:id"  element={<Movies />}></Route>
+        <Route exact={true} path="/:id"  element={<Movies movie={movie} isLoading={isLoading} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} />}></Route>
           
         <Route><h3>Error 404</h3></Route>
           
