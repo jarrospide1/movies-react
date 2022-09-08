@@ -22,7 +22,7 @@ body {
 .header-container {
     display: flex;
     flex-wrap: wrap;
-    background-color: rgb(130, 207, 210);
+    background-color: #040c21;
     margin: 0 0 5% 0;
     justify-content: center;    
 }
@@ -41,6 +41,10 @@ body {
     align-self: center;
     color: #ffffff;
     text-decoration: none;
+}
+
+.background {
+    background-color: #040c21;
 }
 
 .h3-title {
@@ -109,8 +113,13 @@ ul {
     font-size: 14px;
 }
 
+.bi-star {
+    color: white;
+}
 
-
+.bi-star2 {
+    color: yellow;
+}
 
 /* Styles for Add component */
 .search-container {

@@ -60,7 +60,7 @@ function Movies( {movie, isLoading, AddToWatchlist, addFavoriteMovie, favorites 
                                                     alt={`${oneMovie.title} Poster`} 
                                                 />
                                                 <div onClick={() => addFavoriteMovie(oneMovie)} className='overlay d-flex align-items'>
-                                                    <AddToWatchlist  favorites={favorites}/>
+                                                    <AddToWatchlist  favorites={favorites} oneMovie={oneMovie}/>
                                                 </div>
                                                 <h3 >{oneMovie.title}</h3>
                                                 <h5>{oneMovie.release_date.substring(0,4)}</h5>

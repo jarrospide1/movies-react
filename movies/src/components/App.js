@@ -36,6 +36,7 @@ function App() {
   }, [])
   // Ends componentDidMount
 
+  //  Load the data from LocalStorage when the componente mounts
   useEffect(() => {
     const movieFavorites = JSON.parse(localStorage.getItem('react-movie-favorites'));
     setFavorites(movieFavorites);
@@ -48,10 +49,12 @@ function App() {
 
   //Function to update state of Favourites list, and passing the funtion to Movies
   const addFavoriteMovie = function(oneMovie) {
-    const newFavoriteList = [...favorites, oneMovie];
-    setFavorites(newFavoriteList);
-    saveToLocalStorage(newFavoriteList); 
-    //console.log(newFavoriteList)
+    if (!favorites.includes(oneMovie)) {
+      const newFavoriteList = [...favorites, oneMovie];
+      setFavorites(newFavoriteList);
+      saveToLocalStorage(newFavoriteList); 
+      //console.log(newFavoriteList)
+    }
   }
 
   const removeFavoriteMovie = function(oneMovie) {
