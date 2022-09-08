@@ -18,7 +18,7 @@ function Detail ( {movie, addFavoriteMovie} ) {
                                     <h5>{oneMovie.release_date.substring(0,4)}</h5>
                                     <h5>Rating: {oneMovie.vote_average}</h5>
                                     <p>{oneMovie.overview}</p>
-                                    <button className="btn btn-dark" onClick={() => addFavoriteMovie(oneMovie)}> Add to Favorites</button>                                    
+                                    <button className="btn btn-outline-light" onClick={() => addFavoriteMovie(oneMovie)}> Add to Favorites</button>                                    
                                 </div>                                    
                             </div>
                         </div>                        

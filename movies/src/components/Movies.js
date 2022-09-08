@@ -36,14 +36,10 @@ function Movies( {movie, isLoading, AddToWatchlist, addFavoriteMovie, favorites 
 
     return(
 
-        <>
-
-            < Add />
-            
-            
+        <>            
             {clickedMovie && <SelectedMovie clickedMovie={clickedMovie} setClickedMovie={setClickedMovie} />}
 
-            <h3 className="h3-title">Main Movies</h3>
+            <h3 className="display-3 h3-title">Main Movies</h3>
             <section className="movies-main">            
 
                 {isLoading && <h2>Cargando pelis ...</h2> }            
@@ -53,22 +49,23 @@ function Movies( {movie, isLoading, AddToWatchlist, addFavoriteMovie, favorites 
                         {currentMovies.map( (oneMovie, index) => {
                             return (
                                 
-                                        <article className="one-movie" key={index} onClick={() => selectMovie(oneMovie)} >
-                                            <div className="inside-one-movie">
-                                                <img className="poster" 
-                                                    src={`http://image.tmdb.org/t/p/original${oneMovie.poster_path}`} 
-                                                    alt={`${oneMovie.title} Poster`} 
-                                                />
-                                                <div onClick={() => addFavoriteMovie(oneMovie)} className='overlay d-flex align-items'>
-                                                    <AddToWatchlist  favorites={favorites} oneMovie={oneMovie}/>
-                                                </div>
-                                                <h3 >{oneMovie.title}</h3>
-                                                <h5>{oneMovie.release_date.substring(0,4)}</h5>
-                                                <Link to={`/movie/${oneMovie.title}`} className="btn btn-dark"> Details </Link> 
-                                            </div>                
-                                        </article>
-                                )                        
-                            })                    
+                                <article className="one-movie" key={index} onClick={() => selectMovie(oneMovie)} >
+                                    <div className="inside-one-movie">
+                                        <img className="poster" 
+                                            src={`http://image.tmdb.org/t/p/original${oneMovie.poster_path}`} 
+                                            alt={`${oneMovie.title} Poster`} 
+                                        />
+                                        <div onClick={() => addFavoriteMovie(oneMovie)} className='overlay d-flex align-items'>
+                                            <AddToWatchlist  favorites={favorites} oneMovie={oneMovie}/>
+                                        </div>
+                                        <div className="text-info">
+                                            <h3 >{oneMovie.title}</h3>
+                                            <h5>{oneMovie.release_date.substring(0,4)}</h5>
+                                            <Link to={`/movie/${oneMovie.title}`} className="btn btn-outline-dark"> Details </Link>
+                                        </div> 
+                                    </div>                
+                                </article>
+                            )})                    
                         }
                     </>
                 )}        

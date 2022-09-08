@@ -1,0 +1,21 @@
+
+.search-container {
+    width: 80%;
+    margin:auto;
+    text-align: center;
+    vertical-align: middle;    
+}
+
+.form-location {
+    position: relative;
+    height: 70vh;
+    
+}
+
+.search-movie {
+    width:80%;
+    position: absolute;
+    top: 40%;
+    right: 25%;
+    
+}

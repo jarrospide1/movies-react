@@ -5,6 +5,7 @@ import {useState, useEffect} from 'react';
 
 // components
 import Header from './Header'
+import Main from './Main'
 import Movies from './Movies'
 import Detail from './Detail'
 import Watchlist from './Watchlist';
@@ -74,7 +75,9 @@ function App() {
 
       <Routes>
 
-        <Route exact={true} path="/" element={<Movies movie={movie} isLoading={isLoading} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} favorites={favorites}/>}></Route>       
+      <Route exact={true} path="/" element={<Main />}></Route>
+
+        <Route exact={true} path="/movies-list" element={<Movies movie={movie} isLoading={isLoading} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} favorites={favorites}/>}></Route>       
 
         <Route path="/favorites" element={<Watchlist favorites={favorites} RemoveFromWatchlist={RemoveFromWatchlist} removeFavoriteMovie={removeFavoriteMovie} />}></Route>         
         

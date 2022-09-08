@@ -17,7 +17,7 @@ function SelectedMovie ({clickedMovie, setClickedMovie}) {
                     <h5>{clickedMovie.release_date.substring(0,4)}</h5>
                     <h5>Rating: {clickedMovie.vote_average}</h5>
                     <p>{clickedMovie.overview}</p>
-                    <button className="btn btn-dark" > Add to Favorites</button>                                    
+                    <button className="btn btn-outline-light" > Add to Favorites</button>                                    
                 </div>                                    
             </div>
         </div>
