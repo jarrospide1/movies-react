@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom"
-function MoviePoster ( {oneMovie} ) {
+
+import AddToWatchlist from "./AddToWatchlist";
+
+function MoviePoster ( {oneMovie, addFavoriteMovie, favorites} ) {
 
 return(
         
@@ -9,6 +12,9 @@ return(
                         <img src={`http://image.tmdb.org/t/p/original${oneMovie.poster_path}`} alt={`${oneMovie.title} Poster`} width="200px"></img>
                     ) : 
                         <div className="no-poster"></div>}
+                </div>
+                <div onClick={() => addFavoriteMovie(oneMovie)} className='overlay d-flex align-items'>
+                    <AddToWatchlist  favorites={favorites} oneMovie={oneMovie}/>
                 </div>
                 <div className="text-info">
                     <h3 className="search-movie-title"> {oneMovie.title} </h3>

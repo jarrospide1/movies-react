@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import {useEffect, useState } from 'react';
 import MoviePoster from "./MoviePoster";
+import AddToWatchlist from './AddToWatchlist';
 
-function Main () {
+function Main ( {addFavoriteMovie, favorites}) {
 
     const [search, setSearch] = useState("");
     const [results, setResults] = useState([]);
@@ -56,7 +57,7 @@ function Main () {
                             <ul className="movies-main">
                                 {results.map( oneMovie => (
                                     <li key={oneMovie.id} className="one-movie"> 
-                                        <MoviePoster oneMovie={oneMovie} />
+                                        <MoviePoster oneMovie={oneMovie} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} favorites={favorites}/>
                                     </li>
                                 ))}
                             </ul>

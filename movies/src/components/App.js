@@ -9,7 +9,6 @@ import Main from './Main'
 import Movies from './Movies'
 import Detail from './Detail'
 import Watchlist from './Watchlist';
-import Add from './Add';
 import AddToWatchlist from './AddToWatchlist'
 import RemoveFromWatchlist from './RemoveFromWatchlist';
 
@@ -75,15 +74,13 @@ function App() {
 
       <Routes>
 
-      <Route exact={true} path="/" element={<Main />}></Route>
+      <Route exact={true} path="/" element={<Main AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} favorites={favorites}/>}></Route>
 
         <Route exact={true} path="/movies-list" element={<Movies movie={movie} isLoading={isLoading} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} favorites={favorites}/>}></Route>       
 
         <Route path="/favorites" element={<Watchlist favorites={favorites} RemoveFromWatchlist={RemoveFromWatchlist} removeFavoriteMovie={removeFavoriteMovie} />}></Route>         
         
-        <Route path="/add" element={<Add />}></Route>
-        
-        <Route path="/movie/:id" element={<Detail movie={movie} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} />}></Route>
+        <Route path="/movie/:id" element={<Detail movie={movie} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie}  />}></Route>
           
         <Route exact={true} path="/:id"  element={<Movies movie={movie} isLoading={isLoading} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} />}></Route>
           

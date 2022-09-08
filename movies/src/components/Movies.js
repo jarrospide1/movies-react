@@ -2,7 +2,6 @@
 import {useState} from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from './Pagination';
-import Add from './Add';
 import SelectedMovie from './SelectedMovie';
 
 
@@ -49,11 +48,12 @@ function Movies( {movie, isLoading, AddToWatchlist, addFavoriteMovie, favorites 
                         {currentMovies.map( (oneMovie, index) => {
                             return (
                                 
-                                <article className="one-movie" key={index} onClick={() => selectMovie(oneMovie)} >
+                                <article className="one-movie" key={index} >
                                     <div className="inside-one-movie">
                                         <img className="poster" 
                                             src={`http://image.tmdb.org/t/p/original${oneMovie.poster_path}`} 
                                             alt={`${oneMovie.title} Poster`} 
+                                            onClick={() => selectMovie(oneMovie)}
                                         />
                                         <div onClick={() => addFavoriteMovie(oneMovie)} className='overlay d-flex align-items'>
                                             <AddToWatchlist  favorites={favorites} oneMovie={oneMovie}/>

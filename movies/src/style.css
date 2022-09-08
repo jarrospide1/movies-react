@@ -27,6 +27,8 @@ body {
     background-color: #040c21;
     justify-content: center;   
     height: 15vh; 
+    margin-bottom: 50px;
+    border-bottom: #ffffff 1px solid;
 }
 
 .header-container img {
@@ -53,7 +55,7 @@ body {
     color: #ffffff;
     padding: 5px;
     margin: 25px 25px 0px;
-    width: 50%;
+    width: 70%;
 }
 
 .bi-arrow-up-circle{
@@ -223,6 +225,11 @@ ul {
     justify-content: center;
 }
 
+.page-link {
+    color: #ffffff;
+    background-color: #040c21;
+}
+
 .inside-one-movie {
     position: relative;
     transition: transform 0.2s;
@@ -322,6 +329,7 @@ ul {
     .header-container {
         justify-content: space-between;
         padding: 0 5%;
+        
     }
 
     .one-movie-poster-display {
