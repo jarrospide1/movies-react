@@ -141,15 +141,11 @@ ul {
     font-size: 14px;
 }
 
-.bi-star {
-    color: white;
-}
-
-.bi-star2 {
-    color: yellow;
-}
-
 /* Styles for Add component */
+.bi-heart-fill {
+    color: red;
+    align-self: center;
+}
 
 
 .main-title {
@@ -266,14 +262,21 @@ ul {
     transition: 0.5s ease;
     opacity: 0;
     top: 0;
-    font-size: 20px;
+    font-size: 15px;
     padding: 20px;
     text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay:focus {
+    font-size: 18px;
 }
 
 .add-star {
     display: flex;
     align-items: center;
+    font-size: 15px;
 }
 
 .one-movie-poster-display {
