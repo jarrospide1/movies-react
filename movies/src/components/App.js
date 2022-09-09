@@ -24,18 +24,18 @@ function App() {
   // componentDidMount
 
   useEffect(() => {
-      //Apicall
+    //Apicall
       fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_MOVIES_KEY}&language=en-US&page=1`)
       .then(response => response.json())
       .then(data => {
-          setMovie(data.results);
+          setMovie([...movie, ...data.results]);
           setIsLoading(false)
-          //console.log('data', data);
+          //console.log('data', data);          
       })
       .catch(err => console.log(err))
   }, [])
   // Ends componentDidMount
-
+  
   //  Load the data from LocalStorage when the componente mounts
   useEffect(() => {
     const movieFavorites = JSON.parse(localStorage.getItem('react-movie-favorites'));
@@ -74,7 +74,7 @@ function App() {
 
       <Routes>
 
-      <Route exact={true} path="/" element={<Main AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} favorites={favorites}/>}></Route>
+        <Route exact={true} path="/" element={<Main AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} favorites={favorites}/>}></Route>
 
         <Route exact={true} path="/movies-list" element={<Movies movie={movie} isLoading={isLoading} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} favorites={favorites}/>}></Route>       
 

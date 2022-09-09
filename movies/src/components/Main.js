@@ -8,7 +8,6 @@ function Main ( {addFavoriteMovie, favorites}) {
     const [search, setSearch] = useState("");
     const [results, setResults] = useState([]);
 
-
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIES_KEY}&language=en-US&page=1&include_adult=false&query=${search}`)
             .then(response => response.json())
@@ -52,7 +51,7 @@ function Main ( {addFavoriteMovie, favorites}) {
                 </div>
                 {results.length > 0 && (
                     <>
-                        <h3 className="display-3 h3-title"><ins>Results</ins></h3>
+                        <h3 className="display-3 h3-title">Results</h3>
                         <div>
                             <ul className="movies-main">
                                 {results.map( oneMovie => (
