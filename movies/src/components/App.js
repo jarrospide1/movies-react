@@ -11,6 +11,8 @@ import Detail from './Detail'
 import Watchlist from './Watchlist';
 import AddToWatchlist from './AddToWatchlist'
 import RemoveFromWatchlist from './RemoveFromWatchlist';
+import {search} from './Main';
+import SearchDetail from './searchDetail';
 
 
 function App() {
@@ -21,32 +23,35 @@ function App() {
   
   //console.log('movie', movie);
   //console.log('setMovie', setMovie);
+  
   // componentDidMount
-
   useEffect(() => {
     //Apicall
       fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_MOVIES_KEY}&language=en-US&page=1`)
       .then(response => response.json())
       .then(data => {
-          setMovie([...movie, ...data.results]);
+          setMovie(data.results);
           setIsLoading(false)
           //console.log('data', data);          
       })
       .catch(err => console.log(err))
   }, [])
   // Ends componentDidMount
-  
+
   //  Load the data from LocalStorage when the componente mounts
   useEffect(() => {
     const movieFavorites = JSON.parse(localStorage.getItem('react-movie-favorites'));
-    setFavorites(movieFavorites);
+    if(movieFavorites){
+      setFavorites(movieFavorites);
+    }
+    
   }, [])
 
-  //Configure LocalStorage
+  //Configure setItem in LocalStorage
   const saveToLocalStorage = function(items) {
     return localStorage.setItem('react-movie-favorites', JSON.stringify(items))
   };
-
+ 
   //Function to update state of Favourites list, and passing the funtion to Movies
   const addFavoriteMovie = function(oneMovie) {
     if (!favorites.includes(oneMovie)) {
@@ -56,7 +61,7 @@ function App() {
       //console.log(newFavoriteList)
     }
   }
-
+ console.log(favorites)
   const removeFavoriteMovie = function(oneMovie) {
     const newFavoriteList = favorites.filter(
       (favorite) => favorite.id !== oneMovie.id      
@@ -80,7 +85,9 @@ function App() {
 
         <Route path="/favorites" element={<Watchlist favorites={favorites} RemoveFromWatchlist={RemoveFromWatchlist} removeFavoriteMovie={removeFavoriteMovie} />}></Route>         
         
-        <Route path="/movie/:id" element={<Detail movie={movie} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie}  />}></Route>
+        <Route path="/movie/:id" element={<Detail movie={movie} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} /> }></Route>
+
+        <Route path="/search/movie/:id" element={<SearchDetail />} />
           
         <Route exact={true} path="/:id"  element={<Movies movie={movie} isLoading={isLoading} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} />}></Route>
           

@@ -1,7 +1,7 @@
-import {useParams, useNavigate} from "react-router-dom";
-import {Link} from 'react-router-dom'
+import { useParams, useNavigate } from "react-router-dom";
+import searchResults from "./Context";
 
-function Detail ( {movie, addFavoriteMovie} ) {
+function SearchDetail ({ results, addFavoriteMovie }) {
 
     const {id} = useParams();
     console.log(id);
@@ -10,7 +10,7 @@ function Detail ( {movie, addFavoriteMovie} ) {
 
     return(
         <>
-            {movie.map( (oneMovie, index) => {
+            {results.map( (oneMovie, index) => {
                 if(id === oneMovie.title) {
                     return (
                         <div className="movie-detail-container-display" key={index}>
@@ -31,7 +31,8 @@ function Detail ( {movie, addFavoriteMovie} ) {
             })                    
         }
         </>    
-    )   
+    )
+
 }
 
-export default Detail;
+export default SearchDetail;

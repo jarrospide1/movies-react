@@ -2,7 +2,7 @@ import {Link} from "react-router-dom"
 
 
 function Watchlist( { favorites, RemoveFromWatchlist, removeFavoriteMovie } ) {
-
+console.log(favorites)
     return(
         <div>
             <h1 className="h3-title display-3">Favorite Movies</h1>

@@ -1,4 +1,4 @@
-function AddToWatchlist( {favorites, oneMovie} ) {
+function AddToWatchlist( ) {
 
     return(        
         <div className="add-star" >

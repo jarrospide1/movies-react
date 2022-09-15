@@ -30,7 +30,6 @@ function Movies( {movie, isLoading, AddToWatchlist, addFavoriteMovie, favorites 
         const newClickedMovie = oneMovie;
         setClickedMovie(newClickedMovie);
         window.scrollTo({top: 100, left: 0, behavior: 'smooth'})
-        console.log(clickedMovie)
     }
 
     return(
@@ -56,7 +55,7 @@ function Movies( {movie, isLoading, AddToWatchlist, addFavoriteMovie, favorites 
                                             onClick={() => selectMovie(oneMovie)}
                                         />
                                         <div onClick={() => addFavoriteMovie(oneMovie)} className='overlay d-flex align-items'>
-                                            <AddToWatchlist  favorites={favorites} oneMovie={oneMovie}/>
+                                            <AddToWatchlist />
                                         </div>
                                         <div className="text-info">
                                             <h3 >{oneMovie.title}</h3>
