@@ -11,7 +11,6 @@ import Detail from './Detail'
 import Watchlist from './Watchlist';
 import AddToWatchlist from './AddToWatchlist'
 import RemoveFromWatchlist from './RemoveFromWatchlist';
-import {search} from './Main';
 import SearchDetail from './searchDetail';
 
 
@@ -20,7 +19,8 @@ function App() {
   const [movie, setMovie] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [favorites, setFavorites] = useState([]);
-  
+  const [ value, setValue] = useState([])
+
   //console.log('movie', movie);
   //console.log('setMovie', setMovie);
   
@@ -61,7 +61,7 @@ function App() {
       //console.log(newFavoriteList)
     }
   }
- console.log(favorites)
+
   const removeFavoriteMovie = function(oneMovie) {
     const newFavoriteList = favorites.filter(
       (favorite) => favorite.id !== oneMovie.id      
@@ -73,26 +73,41 @@ function App() {
   }
 
 
+  const [search, setSearch] = useState("");
+  const [results, setResults] = useState([]);
+  useEffect(() => {
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIES_KEY}&language=en-US&page=1&include_adult=false&query=${search}`)
+        .then(response => response.json())
+        .then((data) => {
+            if(data.results) {
+                setResults(data.results);
+            } else {
+                setResults([]);
+            }
+        })
+        .catch(err => console.error(err));
+    }, [search]
+)
+console.log(results)
+
   return (
     <div className="App">
       <Header />
 
       <Routes>
+        <Route exact={true} path="/" element={<Main AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} favorites={favorites} results={results} search={search} setSearch={setSearch} />}></Route>
 
-        <Route exact={true} path="/" element={<Main AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} favorites={favorites}/>}></Route>
+        <Route path="/search/movie/:id" element={<SearchDetail results={results} />} />
 
         <Route exact={true} path="/movies-list" element={<Movies movie={movie} isLoading={isLoading} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} favorites={favorites}/>}></Route>       
 
         <Route path="/favorites" element={<Watchlist favorites={favorites} RemoveFromWatchlist={RemoveFromWatchlist} removeFavoriteMovie={removeFavoriteMovie} />}></Route>         
         
         <Route path="/movie/:id" element={<Detail movie={movie} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} /> }></Route>
-
-        <Route path="/search/movie/:id" element={<SearchDetail />} />
           
         <Route exact={true} path="/:id"  element={<Movies movie={movie} isLoading={isLoading} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} />}></Route>
           
-        <Route><h3>Error 404</h3></Route>
-          
+        <Route><h3>Error 404</h3></Route>          
       </Routes>
 
     </div>

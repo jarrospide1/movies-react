@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 import AddToWatchlist from "./AddToWatchlist";
 
-function MoviePoster ( {oneMovie, addFavoriteMovie, favorites} ) {
+function MoviePoster ( {oneMovie, addFavoriteMovie, favorites, results} ) {
 
 return(
         
@@ -20,7 +20,7 @@ return(
                     <h3 className="search-movie-title"> {oneMovie.title} </h3>
                     <h5>{oneMovie.release_date.substring(0,4)}</h5>
                     {/*<p className="search-movie-description"> {oneMovie.overview} </p>*/}
-                    <Link to={`/movie/${oneMovie.title}`} className="btn btn-outline-dark"> Details </Link>
+                    <Link to={`/search/movie/${oneMovie.title}`} className="btn btn-outline-dark"> Details </Link>
                 </div>
             </div>
         

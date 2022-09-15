@@ -15,7 +15,9 @@ function Detail ( {movie, addFavoriteMovie} ) {
                     return (
                         <div className="movie-detail-container-display" key={index}>
                             <div className="one-movie-poster-display">
-                                <img className="detail-poster-display" src={`http://image.tmdb.org/t/p/original${oneMovie.poster_path}`} alt={`${oneMovie.title} Poster`} />
+                                <div className="detail-poster-container">
+                                    <img className="detail-poster-display" src={`http://image.tmdb.org/t/p/original${oneMovie.poster_path}`} alt={`${oneMovie.title} Poster`} />
+                                </div>
                                 <div className="detail-data">
                                     <i className="gg-close" onClick={() => navigate(-1)}></i>
                                     <h3>{oneMovie.title}</h3>

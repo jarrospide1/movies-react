@@ -1,28 +1,15 @@
 import { Link } from 'react-router-dom';
-import {useEffect, useState } from 'react';
+import {useEffect, useState, useContext } from 'react';
 import MoviePoster from "./MoviePoster";
 import AddToWatchlist from './AddToWatchlist';
 
-function Main ( {addFavoriteMovie, favorites}) {
+function Main ( {addFavoriteMovie, favorites, results, search, setSearch}) {
 
-    const [search, setSearch] = useState("");
-    const [results, setResults] = useState([]);
 
-    useEffect(() => {
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIES_KEY}&language=en-US&page=1&include_adult=false&query=${search}`)
-            .then(response => response.json())
-            .then((data) => {
-                //console.log(data.results);
-                if(data.results) {
-                    setResults(data.results);
-                    //console.log(results);
-                } else {
-                    setResults([]);
-                }
-            })
-            .catch(err => console.error(err));
-        }, [search]
-    )
+    //const [search, setSearch] = useState("");
+    //const [results, setResults] = useState([]);
+
+    
 
     const topSearch = function () {
         window.scrollTo({top: 30, left: 0, behavior: 'smooth'})
@@ -56,7 +43,7 @@ function Main ( {addFavoriteMovie, favorites}) {
                             <ul className="movies-main">
                                 {results.map( oneMovie => (
                                     <li key={oneMovie.id} className="one-movie"> 
-                                        <MoviePoster oneMovie={oneMovie} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} favorites={favorites}/>
+                                        <MoviePoster oneMovie={oneMovie} AddToWatchlist={AddToWatchlist} addFavoriteMovie={addFavoriteMovie} favorites={favorites} results={results} />
                                     </li>
                                 ))}
                             </ul>
